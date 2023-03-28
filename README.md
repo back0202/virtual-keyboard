@@ -6,7 +6,7 @@ npm install 한후 package.json에 입력된 scripts를 참고하여 dev server�
 - switch를 클릭하게 되면 checkbox가 체크 되는데 그때 어떤 건 css로 하고 어떤건 js로 한다. 내생각에는 css로 할수있는 transform, transition, animation이면 css로 하고 아니면 js로 하는게 아닐까.
 
 # 알게된점
-'''
+```
   #assignElement() {
     this.#containerEl = document.getElementById("container");
     this.#swichEl = this.#containerEl.querySelector("#switch");
@@ -15,4 +15,4 @@ npm install 한후 package.json에 입력된 scripts를 참고하여 dev server�
     this.#inputGroupEl = this.#containerEl.querySelector("#input-group");
     this.#inputEl = this.#inputGroupEl.querySelector("#input");
   }
-'''
+```
