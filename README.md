@@ -10,7 +10,36 @@ npm install 한후 package.json에 입력된 scripts를 참고하여 dev server�
 # 고민한점
 1. 어디까지 css고 어디까지 js일까
 - switch를 클릭하게 되면 checkbox가 체크 되는데 그때 어떤 건 css로 하고 어떤건 js로 한다. 내생각에는 css로 할수있는 transform, transition, animation이면 css로 하고 아니면 js로 하는게 아닐까.
-
+2. class this
+- 모르겠다. 
+```
+#addEvent() {
+    this.#switchEl.addEventListener("change", this.#onChangeTheme)
+    this.#fontSelectEl.addEventListener("change", this.#onChangeFont)
+    this.#inputEl.addEventListener("input", this.#onInput)
+    document.addEventListener("keydown", this.#onKeyDown.bind(this))
+    document.addEventListener("keyup", this.#onKeyUp.bind(this))
+    this.#keyboardEl.addEventListener("mousedown", this.#onMouseDown.bind(this))
+    document.addEventListener("mouseup", this.#onMouseUp.bind(this));
+  }
+  #onMouseUp(event) {
+    this.#mouseDown = false
+    const keyEl = event.target.closest("div.key")
+    const isActive = !!keyEl.classList.contains("active")
+    const val = keyEl?.dataset.val
+    if (isActive && !!val && val !== "Space" && val !== "Backspace") {
+      this.#inputEl.value += val
+    }
+    if (isActive && val === "Space") {
+      this.#inputEl.value += " "
+    }
+    if (isActive && val === "Backspace") {
+      this.#inputEl.value = this.#inputEl.value.slice(0, -1)
+    }
+    this.#keyboardEl.querySelector(".active").classList.remove("active")
+  }
+```
+- onMouseUp 안에서 this는 왜 class를 가리키지 않는 거지?. 
 # 알게된점
 1. 비용을 최소화 하기 위해 document.getElementById가 아닌 #containerEl.querySelector을 이용
 ```
